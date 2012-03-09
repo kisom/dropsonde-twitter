@@ -52,3 +52,7 @@ end
 group :production do
   gem 'pg'
 end
+
+group :assets do
+  gem 'less-rails-bootstrap'
+end
