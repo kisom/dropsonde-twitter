@@ -1,3 +1,3 @@
-consumer:
-    key: OmLZVduJi6P1EDCBFxH0Rw
-    secret: DJmX58P38wmywJarZZl2XY8BOabEKaklIsQ6WG5u7g
+callback_urls: 
+  production: https://twitter.dropsonde.net/twitter/auth
+  development: http://dev.twipler.com:3000/twitter/auth

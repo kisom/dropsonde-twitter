@@ -1,4 +1,10 @@
 DropsondeTwitter::Application.routes.draw do
+  get "twitter/auth"
+
+  get "twitter/receive"
+
+  get "twitter/send"
+
   get "home/index"
 
   # The priority is based upon order of creation:
