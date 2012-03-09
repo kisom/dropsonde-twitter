@@ -52,6 +52,7 @@ gem 'newrelic_rpm'
 #
 
 gem "twitter"
+gem "twitter-auth"
 gem "oauth"
 gem "tropo-webapi-ruby"
 
