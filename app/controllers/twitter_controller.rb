@@ -6,6 +6,8 @@ class TwitterController < ApplicationController
   def receive
   end
 
-  def send(options = {})
+  def send(foo, options = {})
+  	logger.debug "FOO: #{foo}"
+  	logger.debug "OPTS: #{options}"
   end
 end
