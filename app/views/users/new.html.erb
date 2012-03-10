@@ -1,0 +1,15 @@
+<% if not @auth %>
+<%= redirect_to '/auth/twitter' %>
+<% end %>
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<h1>Welcome to the Dropsonde Gateway</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4"><strong><%= label_tag (:username) %> 
+		   			      </strong></div>
+		<div class="span4"><%= "#{@auth['info']['nickname']}" %></div>
+	</div>
+</div>

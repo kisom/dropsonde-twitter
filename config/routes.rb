@@ -1,4 +1,12 @@
 DropsondeTwitter::Application.routes.draw do
+  resources :users
+
+  get "session/new"
+
+  get "session/create"
+
+  get "session/destroy"
+
   get "twitter/auth"
 
   get "twitter/receive"

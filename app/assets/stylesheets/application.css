@@ -11,3 +11,19 @@
  *= require_self
  *= require_tree .
 */
+
+@import "bootstrap";
+
+body {
+	background-color: #A9E5FC;
+	color: #424242;
+	margin: 20% 10%;
+}
+
+h1 {
+	text-align: center;
+}
+
+.center-button {
+	text-align: center;
+}
