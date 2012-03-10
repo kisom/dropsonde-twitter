@@ -10,7 +10,7 @@ class TwitterController < ApplicationController
 
   def auth(callback = nil, auth = {})
   	@auth_token = params[:oauth_token]
-  	@auth = auth
+  	@auth = request.env['omniauth.auth']
   	# Twitter.configure do |config|
   	# 	config.consumer_key = ENV['CONSUMER_KEY']
   	# 	config.consumer_secret = ENV['CONSUMER_SECRET']
