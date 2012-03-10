@@ -6,6 +6,6 @@ class TwitterController < ApplicationController
   def receive
   end
 
-  def send(options => {})
+  def send(options = {})
   end
 end
