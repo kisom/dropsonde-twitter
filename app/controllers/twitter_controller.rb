@@ -1,13 +1,13 @@
 class TwitterController < ApplicationController
   def auth
-
+  	puts "auth controller"
   end
 
   def receive
   end
 
   def send(foo, options = {})
-  	logger.debug "FOO: #{foo}"
-  	logger.debug "OPTS: #{options}"
+  	puts "FOO: #{foo}"
+  	puts "OPTS: #{options}"
   end
 end
