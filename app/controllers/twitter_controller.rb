@@ -1,13 +1,17 @@
 class TwitterController < ApplicationController
-  def auth
-  	puts "auth controller"
-  end
-
+  
   def receive
+  	puts "RECIEVE"
   end
 
-  def send(foo, options = {})
-  	puts "FOO: #{foo}"
-  	puts "OPTS: #{options}"
+  # def send(foo, options = {})
+  # 	puts "SEND"
+  # end
+
+  def auth(callback = nil, auth = {})
+  	puts "AUTH"
+   	puts "CB: #{callback}"
+   	puts "AUTH: #{auth}"
   end
+
 end
