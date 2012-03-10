@@ -9,7 +9,7 @@ class SessionController < ApplicationController
   	twitter_username = @auth['info']['nickname']
 
   	user = User.find_by_username(@twitter_username)
-  	if user:
+  	if user
   		session[:user_id] = user.id
   	else:
   		redirect_to user_new_url
