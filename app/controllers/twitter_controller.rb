@@ -1,11 +1,11 @@
 class TwitterController < ApplicationController
-  def auth(token, verifier)
+  def auth
 
   end
 
   def receive
   end
 
-  def send
+  def send(options => {})
   end
 end
