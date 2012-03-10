@@ -3,9 +3,9 @@ class SessionController < ApplicationController
   end
 
   def create
- 	auth_token = params[:oauth_token]
+ 	  auth_token = params[:oauth_token]
   	@auth = request.env['omniauth.auth']
-  	auth_secret = auth['credentials']['secret']
+  	auth_secret = @auth['credentials']['secret']
   	twitter_username = @auth['info']['nickname']
 
   	user = User.find_by_username(@twitter_username)
