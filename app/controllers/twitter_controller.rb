@@ -13,6 +13,7 @@ class TwitterController < ApplicationController
   	@auth = request.env['omniauth.auth']
   	@auth_secret = request.env['omniauth.auth.credentials.secret']
   	@twitter_username = request.env['omniauth.auth.info.nickname']
+  	@twitter_username = @auth['info']['nickname']
   	# Twitter.configure do |config|
   	# 	config.consumer_key = ENV['CONSUMER_KEY']
   	# 	config.consumer_secret = ENV['CONSUMER_SECRET']
