@@ -13,6 +13,7 @@ class SessionController < ApplicationController
   		session[:user_id] = user.id
   	else:
   		redirect_to user_new_url
+    end
   end
 
   def destroy
