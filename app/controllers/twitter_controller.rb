@@ -9,9 +9,7 @@ class TwitterController < ApplicationController
   # end
 
   def auth(callback = nil, auth = {})
-  	puts "AUTH"
-   	puts "CB: #{callback}"
-   	puts "AUTH: #{auth}"
+  	auth_token = params[:query_string['oauth_token']]
   end
 
 end
