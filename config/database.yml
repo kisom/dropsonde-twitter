@@ -40,10 +40,11 @@ test:
   username: tdgateway
   password: 
 
-development:
+production:
   adapter: postgresql
   encoding: unicode
-  database: tdgateway
+  host: ec2-107-20-254-136.compute-1.amazonaws.com
+  database: qyxvhzgrnk
   pool: 5
-  username: tdgateway
-  password: 
+  username: qyxvhzgrnk
+  password: 4rRSgFT9QfpEmAtXhEe5

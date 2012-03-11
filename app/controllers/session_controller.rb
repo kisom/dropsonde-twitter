@@ -8,7 +8,11 @@ class SessionController < ApplicationController
   	auth_secret = @auth['credentials']['secret']
   	twitter_username = @auth['info']['nickname']
 
-  	user = User.find_by_username(@twitter_username)
+    begin
+  	  user = User.find_by_username(@twitter_username)
+    rescue
+      user = nil
+    end
   	if user
   		session[:user_id] = user.id
   	else
