@@ -16,7 +16,7 @@ class SessionController < ApplicationController
   	if user
   		session[:user_id] = user.id
   	else
-  		redirect_to user_new_url
+  		redirect_to new_user_url
     end
   end
 
