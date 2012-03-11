@@ -25,7 +25,9 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @auth = session[:auth]
+    auth_token = session[:auth_token]
+    auth_secret = session[:auth_secret]
+    twitter_username = session[:username]
 
     respond_to do |format|
       format.html # new.html.erb
