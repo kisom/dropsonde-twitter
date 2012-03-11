@@ -27,9 +27,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: tdgateway
+  database: tdgateway_dev
   pool: 5
-  username: tdgateway_dev
+  username: tdgateway
   password: 
 
 test:

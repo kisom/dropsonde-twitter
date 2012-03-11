@@ -7,6 +7,8 @@ DropsondeTwitter::Application.routes.draw do
 
   get "session/destroy"
 
+  get "users/new"
+
   get "twitter/auth"
 
   get "twitter/receive"
