@@ -16,6 +16,7 @@ class SessionController < ApplicationController
   	if user
   		session[:user_id] = user.id
   	else
+      session[:auth] = @auth
   		redirect_to new_user_url
     end
   end

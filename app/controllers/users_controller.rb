@@ -25,11 +25,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @auth = request.env['omniauth.auth']
-    if not @auth
-      redirect_to '/auth/twitter/'
-      return
-    end
+    @auth = session[:auth]
 
     respond_to do |format|
       format.html # new.html.erb
