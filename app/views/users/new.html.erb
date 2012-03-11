@@ -7,8 +7,10 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="span4"><strong><%= label_tag (:username) %> 
+		<div class="span4"><strong><%= label_tag :username %> 
 		   			      </strong></div>
-		<div class="span4"><%= "#{@auth['info']['nickname']}" %></div>
+		<div class="span4"><%= text_field_tag :username, 
+							   "#{@auth['info']['nickname']}",
+							   :disabled => true %></div>
 	</div>
 </div>
