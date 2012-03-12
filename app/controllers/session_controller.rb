@@ -21,7 +21,7 @@ class SessionController < ApplicationController
       session[:username] = twitter_username
 
   		session[:uid] = user.id
-      redirect_to :controller => 'users', :action => 'update'
+      redirect_to {:controller => :users, :action => :update}
   	else
       session[:auth_token] = auth_token
       session[:auth_secret] = auth_secret
