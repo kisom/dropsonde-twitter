@@ -15,7 +15,7 @@ class SessionController < ApplicationController
     rescue
       user = nil
     end
-  	if user
+  	unless user.nil?
       session[:auth_token] = auth_token
       session[:auth_secret] = auth_secret
       session[:username] = twitter_username
