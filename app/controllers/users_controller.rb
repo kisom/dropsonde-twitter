@@ -24,10 +24,15 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-    @user = User.new
-    auth_token = session[:auth_token]
-    auth_secret = session[:auth_secret]
-    twitter_username = session[:username]
+    @auth_token = session[:auth_token]
+    @auth_secret = session[:auth_secret]
+    @username = session[:username]
+
+    @user = User.new(:username => @username, :auth_token => @auth_token,
+                     :auth_secret => @auth_secret)
+    # @user.update_attribute :username, @username
+    # @user.update_attribute :auth_token, @auth_token
+    # @user.update_attribute :auth_secret, @auth_secret
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,9 +50,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+    puts "*** USER CONTROLLER: create"
+
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+      if @user.valid? and @user.save
+        format.html { redirect_to home_index_url, 
+                      notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

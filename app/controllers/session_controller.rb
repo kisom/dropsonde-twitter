@@ -27,4 +27,13 @@ class SessionController < ApplicationController
 
   def destroy
   end
+
+  def dev
+    session[:auth_token] = 'foo'
+    session[:auth_secret] = 'bar'
+    session[:username] = 'bazquux'
+
+    redirect_to new_user_url
+  end
+
 end

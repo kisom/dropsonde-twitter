@@ -6,11 +6,58 @@
 			<h1>Welcome to the Dropsonde Gateway</h1>
 		</div>
 	</div>
+	<%= form_for @user, :url =>  { :action => "create" }, 
+						:html => { :class => 'create' },
+						:method => 'post' do |f| %>
+
+<!-- username -->
 	<div class="row">
-		<div class="span4"><strong><%= label_tag :username %> 
-		   			      </strong></div>
-		<div class="span4"><%= text_field_tag :username, 
-							   "#{@auth['info']['nickname']}",
-							   :disabled => true %></div>
+		<div class="span4">
+			<strong><%= f.label :username, 'username' %></strong>
+		</div>
+		<div class="span4">
+			<%= f.text_field :username, :disabled => true %>
+		</div>
 	</div>
+
+<!-- auth_token -->
+	<div class="row">
+		<div class="span4">
+			<strong><%= f.label :auth_token, 'OAuth Token' %></strong>
+		</div>
+		<div class="span4">
+			<%= f.text_field :auth_token, :disabled => true %>
+		</div>
+	</div>
+
+<!-- auth_secret -->
+	<div class="row">
+		<div class="span1">
+			<strong><%= f.label :auth_secret, 'OAuth Secret' %>
+			</strong>
+		</div>
+		<div class="span1">
+			<%= f.text_field :auth_secret, :disabled => true %>
+		</div>
+	</div>	
+
+<!-- SMS number -->
+	<div class="row">
+		<div class="span1">
+			<strong><%= f.label :sms, 'SMS #' %></strong>
+		</div>
+		<div class="span1">
+			<%= f.text_field :sms %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span4"><p></p></div>
+		<div class="span4">
+		  <%= f.submit "Create" %>
+		</div>
+		<div class="span4"><p></p></div>
+	</div>
+	<% end %>
+
 </div>

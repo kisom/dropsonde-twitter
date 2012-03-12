@@ -32,6 +32,7 @@ DropsondeTwitter::Application.routes.draw do
   match 'auth/twitter/callback', :controller => 'session', 
         :action => 'create'
   match 'auth/failure', :controller => 'home', :action => 'index'
+  match 'session/devnew', :controller => 'session', :action => 'dev'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
