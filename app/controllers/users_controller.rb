@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
     session[:uid] = @user.id
     update
+  end
 
   def index
     redirect_to home_index_url
