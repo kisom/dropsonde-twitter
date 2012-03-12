@@ -1,3 +1,0 @@
-callback_urls: 
-  production: https://twitter.dropsonde.net/twitter/auth
-  development: http://dev.twipler.com:3000/twitter/auth
