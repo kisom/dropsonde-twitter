@@ -24,6 +24,7 @@ class TwitterController < ApplicationController
         conf.oauth_consumer_token = ENV['CONSUMER_TOKEN']
         conf.oauth_consumer_secret = ENV['CONSUMER_SECRET']
       end
+    end
   end
 
 end
