@@ -20,3 +20,5 @@ The codebase is still ugly.
 Can I use this and make it work for me? Most likely. You'll need to store
 your Twitter consumer keys as environment vars on Heroku - CONSUMER_TOKEN
 and CONSUMER_KEY.
+
+Also, there are no tests. I am deeply ashamed of this.
