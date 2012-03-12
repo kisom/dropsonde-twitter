@@ -1,3 +1,5 @@
+require 'twitter'
+
 class TwitterController < ApplicationController
   
   # receive a direct message
@@ -6,7 +8,12 @@ class TwitterController < ApplicationController
   end
 
   # send a direct message
-  def send(foo, options = {})
+  def send(callback, options)
+    if session[:uid].nil?
+      redirect_to '/auth/twitter'
+      return
+    end
+
     auth
     @user = User.find(session[:uid])
     @message = params[:message]
@@ -16,8 +23,13 @@ class TwitterController < ApplicationController
     twitter.message(:post, message, recipient)
   end
 
-  def auth(callback = nil, auth = {})
+  def auth
+    if session[:uid].nil?
+      redirect_to '/auth/twitter'
+    end
+
     @user = User.find(session[:uid])
+
     if @user.nil?
       redirect_to '/auth/twitter'
       Twitter::Client.configure do |conf|

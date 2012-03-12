@@ -53,6 +53,10 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    unless User.find_by_username(session[:username]).nil?
+      redirect_to 'users#update'
+      return
+    end
     @user = User.new(params[:user])
 
     logger.info "*** USER CONTROLLER: create"
