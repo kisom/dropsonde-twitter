@@ -3,8 +3,9 @@ class SessionController < ApplicationController
   end
 
   def create
- 	  auth_token = params[:oauth_token]
-  	@auth = request.env['omniauth.auth']
+    reset_session
+  	
+    @auth = request.env['omniauth.auth']
     auth_token =  @auth['credentials']['token']
   	auth_secret = @auth['credentials']['secret']
   	twitter_username = @auth['info']['nickname']
@@ -26,6 +27,7 @@ class SessionController < ApplicationController
   end
 
   def destroy
+    reset_session
   end
 
   def dev

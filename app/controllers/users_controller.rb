@@ -2,12 +2,13 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    redirect_to home_index_url
+    # @users = User.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @users }
+    # end
   end
 
   # GET /users/1
@@ -27,6 +28,10 @@ class UsersController < ApplicationController
     @auth_token = session[:auth_token]
     @auth_secret = session[:auth_secret]
     @username = session[:username]
+
+    if @username.empty? or @auth_token.empty? or @auth_secret.empty?
+      redirect_to '/auth/twitter'
+    end
 
     @user = User.new(:username => @username, :auth_token => @auth_token,
                      :auth_secret => @auth_secret)
@@ -50,10 +55,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    puts "*** USER CONTROLLER: create"
+    logger.info "*** USER CONTROLLER: create"
+    logger.info "*** USER: #{@user}"
+    logger.info "*** USER: #{@user.username}"
+    logger.info "*** USER: #{@user.auth_token}"
+    logger.info "*** USER: #{@user.auth_secret}"
+    logger.info "*** USER: #{@user.sms}"
 
     respond_to do |format|
       if @user.valid? and @user.save
+        session[:uid] = @user.id
         format.html { redirect_to home_index_url, 
                       notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
