@@ -22,3 +22,10 @@ your Twitter consumer keys as environment vars on Heroku - CONSUMER_TOKEN
 and CONSUMER_KEY.
 
 Also, there are no tests. I am deeply ashamed of this.
+
+Yes, there's commented out code. Here's why:
+
+0. I designed this service to be used really only by me, because 99.99% 
+of people are covered by the current service.
+0. The only way to test some of the code was to push to heroku and pull 
+down the crash logs.
