@@ -78,7 +78,12 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    @user = User.find(session[:uid])
+    @user.update_attribute :auth_token, session[:auth_token]
+    @user.update_attribute :auth_secret, session[:auth_secret]
+    @user.save!
+
+    redirect_to home_index_url
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

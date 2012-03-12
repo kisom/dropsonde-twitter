@@ -16,7 +16,12 @@ class SessionController < ApplicationController
       user = nil
     end
   	if user
-  		session[:user_id] = user.id
+      session[:auth_token] = auth_token
+      session[:auth_secret] = auth_secret
+      session[:username] = twitter_username
+
+  		session[:uid] = user.id
+      redirect_to :controller => 'users', :action => 'update'
   	else
       session[:auth_token] = auth_token
       session[:auth_secret] = auth_secret
