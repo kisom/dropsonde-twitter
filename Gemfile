@@ -58,7 +58,7 @@ gem 'newrelic_rpm'
 #
 
 #gem "twitter"
-gem "Twitter4R"
+gem "twitter4r"
 gem "omniauth-twitter"
 gem "oauth"
 gem "tropo-webapi-ruby"
