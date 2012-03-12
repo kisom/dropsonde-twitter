@@ -36,11 +36,13 @@ class SessionController < ApplicationController
   end
 
   def dev
-    session[:auth_token] = 'foo'
-    session[:auth_secret] = 'bar'
-    session[:username] = 'bazquux'
+    @user = User.find_by_username('kyleisom')
+    session[:auth_token] = @user.auth_token
+    session[:auth_secret] = @user.auth_secret
+    session[:username] = @user.username
+    session[:uid] = @user.id
 
-    redirect_to new_user_url
+    redirect_to home_index_url
   end
 
 end

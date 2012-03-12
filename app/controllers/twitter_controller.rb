@@ -9,6 +9,8 @@ class TwitterController < ApplicationController
 
   # send a direct message
   def send(callback, options)
+    logger.info "Twitter::Send"
+    logger.info "#{session[:uid]}"
     if session[:uid].nil?
       redirect_to '/auth/twitter'
       return
@@ -20,7 +22,14 @@ class TwitterController < ApplicationController
     @recipient = params[:recipient]
     twitter = Twitter::Client.new(:oauth_access =>
       { :key => @user.auth_token, :secret => @user.auth_secret })
-    twitter.message(:post, message, recipient)
+    twitter.message(:post, @message, @recipient)
+
+    respond_to do |format|
+      format.html 
+      format.json {render json: { :status => '200', 
+        :message => {:recipient => @recipient,
+                     :message => @message}}}
+    end
   end
 
   def auth
