@@ -30,7 +30,7 @@ DropsondeTwitter::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
   match 'auth/twitter/callback', :controller => 'session', 
-        :action => 'create'
+        :action => 'setup'
   match 'auth/failure', :controller => 'home', :action => 'index'
   match 'session/devnew', :controller => 'session', :action => 'dev'
 

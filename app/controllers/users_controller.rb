@@ -1,6 +1,20 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+
+  def setup
+    @auth_token = session[:auth_token]
+    @auth_secret = session[:auth_secret]
+    @username = session[:username]
+
+    @user = User.find_by_username(session:twitter_username)
+    if @user.nil?
+      redirect_to new_user_url
+    end
+
+    session[:uid] = @user.id
+    update
+
   def index
     redirect_to home_index_url
     # @users = User.all
