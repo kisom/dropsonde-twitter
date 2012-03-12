@@ -12,7 +12,7 @@ class TwitterController < ApplicationController
     @message = params[:message]
     @recipient = params[:recipient]
     twitter = Twitter::Client.new(:oauth_access =>
-      { :key => @user., :secret => ACCESS_SECRET })
+      { :key => @user.auth_token, :secret => @user.auth_secret })
     twitter.message(:post, message, recipient)
   end
 
@@ -20,12 +20,10 @@ class TwitterController < ApplicationController
     @user = User.find(session[:uid])
     if @user.nil?
       redirect_to '/auth/twitter'
-  	Twitter.configure do |config|
-  		config.consumer_key = ENV['CONSUMER_KEY']
-  		config.consumer_secret = ENV['CONSUMER_SECRET']
-  		config.oauth_token = @user.auth_token
-  		config.oauth_secret = @user.auth_secret
-  	end
+      Twitter::Client.configure do |conf|
+        conf.oauth_consumer_token = ENV['CONSUMER_TOKEN']
+        conf.oauth_consumer_secret = ENV['CONSUMER_SECRET']
+      end
   end
 
 end

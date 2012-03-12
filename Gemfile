@@ -57,7 +57,8 @@ gem 'capistrano'
 gem 'newrelic_rpm'
 #
 
-gem "twitter"
+#gem "twitter"
+gem "Twitter4R"
 gem "omniauth-twitter"
 gem "oauth"
 gem "tropo-webapi-ruby"
