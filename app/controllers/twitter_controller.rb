@@ -3,20 +3,18 @@ require 'twitter'
 class TwitterController < ApplicationController
   
   # receive a direct message
+  # INOP because project was ixnayed
   def receive
-  	puts "RECIEVE"
   end
 
   # send a direct message
   def send(callback, options)
-    logger.info "Twitter::Send"
-    logger.info "#{session[:uid]}"
     if session[:uid].nil?
       redirect_to '/auth/twitter'
       return
     end
 
-    auth
+    auth  # call auth first to make sure we are authenticated
     @user = User.find(session[:uid])
     @message = params[:message]
     @recipient = params[:recipient]
@@ -41,10 +39,6 @@ class TwitterController < ApplicationController
 
     if @user.nil?
       redirect_to '/auth/twitter'
-      Twitter::Client.configure do |conf|
-        conf.oauth_consumer_token = ENV['CONSUMER_TOKEN']
-        conf.oauth_consumer_secret = ENV['CONSUMER_SECRET']
-      end
     end
   end
 

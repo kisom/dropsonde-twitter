@@ -36,9 +36,6 @@ class UsersController < ApplicationController
 
     @user = User.new(:username => @username, :auth_token => @auth_token,
                      :auth_secret => @auth_secret)
-    # @user.update_attribute :username, @username
-    # @user.update_attribute :auth_token, @auth_token
-    # @user.update_attribute :auth_secret, @auth_secret
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,17 +52,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     unless User.find_by_username(session[:username]).nil?
-      redirect_to 'users#update'
+      redirect_to 'users#update'                # not sure if this works
       return
     end
     @user = User.new(params[:user])
-
-    logger.info "*** USER CONTROLLER: create"
-    logger.info "*** USER: #{@user}"
-    logger.info "*** USER: #{@user.username}"
-    logger.info "*** USER: #{@user.auth_token}"
-    logger.info "*** USER: #{@user.auth_secret}"
-    logger.info "*** USER: #{@user.sms}"
 
     respond_to do |format|
       if @user.valid? and @user.save
@@ -113,3 +103,5 @@ class UsersController < ApplicationController
     end
   end
 end
+
+
